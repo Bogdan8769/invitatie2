@@ -1,0 +1,20 @@
+let noClickCount = 0;
+
+document.getElementById("yes-btn").addEventListener("click", function () {
+  // Afișează mesajul "MERSIIII" și poza
+  document.getElementById("content").style.display = "none";
+  document.getElementById("thank-you").style.display = "block";
+});
+
+document.getElementById("no-btn").addEventListener("click", function () {
+  noClickCount++;
+
+  if (noClickCount === 1) {
+    this.textContent = "Ești sigură?";
+  } else if (noClickCount === 2) {
+    this.textContent = "Sigur-sigur? 😢";
+  } else if (noClickCount >= 3) {
+    this.style.display = "none";
+    document.getElementById("yes-btn").style.transform = "scale(2)";
+  }
+});

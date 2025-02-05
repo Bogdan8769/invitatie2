@@ -1,0 +1,34 @@
+let noClickCount = 0;
+let yesBtn = document.getElementById("yes-btn");
+let noBtn = document.getElementById("no-btn");
+
+// Lista de mesaje convingătoare
+const convincingMessages = [
+  "Ești sigură?",
+  "Sigur-sigur? 😢",
+  "Dar ar fi foarte frumos! 🥺",
+  "Gândește-te mai bine! 💕",
+  "Hai, nu fii rea! 😘",
+  "O să fie distractiv! 🎉",
+  "Te rog, Bea! 🥰"
+];
+
+noBtn.addEventListener("click", function () {
+  noClickCount++;
+
+  if (noClickCount <= convincingMessages.length) {
+    // Schimbă textul cu mesajele convingătoare
+    this.textContent = convincingMessages[noClickCount - 1];
+  } else {
+    // După ce toate mesajele au fost afișate, ascunde butonul „Nu”
+    this.style.display = "none";
+    let currentScale = parseFloat(yesBtn.style.transform.replace(/[^0-9.]/g, "") || 1); // Citim scara actuală
+    yesBtn.style.transform = `scale(${currentScale + 0.5})`; // Creștem scara cu 0.5
+  }
+});
+
+yesBtn.addEventListener("click", function () {
+  // Afișează mesajul "MERSIIII" și poza
+  document.getElementById("content").style.display = "none";
+  document.getElementById("thank-you").style.display = "block";
+});
